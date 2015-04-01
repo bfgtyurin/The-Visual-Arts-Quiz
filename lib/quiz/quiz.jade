@@ -2,43 +2,39 @@ extend ../views/layout
 
 block content
   div.row
-    div.col-sm-4
-    div.col-sm-4
+    div.col-xs-4
+    div.col-xs-4
       h1.text-center.quiz-title QUIZ
-    div.col-sm-4
+    div.col-xs-4
    div.row
-    div.col-sm-4
-    div.col-sm-4
+    div.col-xs-4
+    div.col-xs-4
       div
         h3.text-center.answer-field &nbsp;
-    div.col-sm-4
+    div.col-xs-4
   div.row
     div.col-sm-4
     div.col-sm-4
       img().center-block.img-responsive.quiz-image.col-height.invisible
-      div.row
-        div.col-sm-3
-        div.col-sm-6
-          div.progress.vert-offset-top-1.invisible
-            div.progress-bar.progress-bar-striped(role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%')
-              span.sr-only45 0 %
-        div.col-sm-3
+      div.progress.vert-offset-top-1.invisible
+        div.progress-bar.progress-bar-striped(role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%')
+        span.sr-only45
     div.col-sm-4
   div.row
-    div.col-sm-4
-    div.col-sm-4.text-center
+    div.col-xs-4
+    div.col-xs-4.text-center
       div.btn-group(role='group')
         button.btn.btn-default.btn-offset.show-button.hidden(type.button) Show answer
         button.btn.btn-danger.btn-offset.no-button.hidden(type.button) No&nbsp;
         button.btn.btn-success.btn-offset.yes-button.hidden(type.button) Yes
         button.btn.btn-default.btn-offset.button-start(type.button) Start
-    div.col-sm-4
+    div.col-xs-4
   //- div.row
-  //-   div.col-sm-4
-  //-   div.col-sm-4.text-center
+  //-   div.col-xs-4
+  //-   div.col-xs-4.text-center
   //-     div.btn-group(role='group').vert-offset-top-1
   //-       button.btn.btn-success.button-prev.btn-offset(type.button)
   //-         span.glyphicon.glyphicon-menu-left
   //-       button.btn.btn-success.button-next.btn-offset(type.button)
   //-         span.glyphicon.glyphicon-menu-right
-  //-   div.col-sm-4
+  //-   div.col-xs-4

@@ -1,17 +1,22 @@
+body {
+    background-image: url(../bg-light-0002.gif);
+}
 .center {
     float: none;
     margin-left: auto;
     margin-right: auto;
 }
+
 .col-height {
-    height: 300px;
+    height: 350px;
 }
+
 .vert-offset-top-2 {
     margin-top: 2em;
 }
 .vert-offset-top-1 {
     margin-top: 1em;
 }
-.btn-offset {
-
+.progress {
+    /*width: 250px;*/
 }
