@@ -1,0 +1,17 @@
+.center {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+.col-height {
+    height: 250px;
+}
+.vert-offset-top-2 {
+    margin-top: 2em;
+}
+.vert-offset-top-1 {
+    margin-top: 1em;
+}
+.btn-offset {
+
+}

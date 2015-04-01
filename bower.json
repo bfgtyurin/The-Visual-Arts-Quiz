@@ -1,0 +1,16 @@
+{
+  "name": "kristod",
+  "version": "0.0.1",
+  "authors": [
+    "Vladimir Tyurin <bfg.tyurin@gmail.com>"
+  ],
+  "description": "foto quiz",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "kristod",
+  "version": "0.0.1",
+  "description": "foto quiz",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "bfg.tyurin@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.12.3",
+    "jade": "^1.9.2"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.4.1",
+    "gulp": "^3.8.11"
+  }
+}
