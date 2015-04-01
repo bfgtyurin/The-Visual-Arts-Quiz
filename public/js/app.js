@@ -8,10 +8,13 @@ $(document).ready(function() {
       this.imageApiPath = '/images-api/';
       this.fetchImages(function(data) {
         this.images = data;
+        this.quizTitle.append(' (' + this.images.length + ')');
+        // test
+        // this.size = 5;
         this.size = data.length;
       }.bind(this));
 
-      this.gallery = this.createGallery();
+      // this.gallery = this.createGallery();
       this.userInput = 0;
       this.cacheElements();
       this.bindEvents();
@@ -32,6 +35,7 @@ $(document).ready(function() {
       this.buttonStart = $('.button-start');
       this.progressDiv = $('.progress');
       this.progressBar = $('.progress-bar');
+      this.quizTitle = $('.quiz-title');
     },
     bindEvents: function() {
       this.buttonStart.on('click', this.prepareImages.bind(this));
