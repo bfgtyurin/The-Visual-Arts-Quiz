@@ -9,12 +9,8 @@ $(document).ready(function() {
       this.fetchImages(function(data) {
         this.images = data;
         this.quizTitle.append(' (' + this.images.length + ')');
-        // test
-        // this.size = 5;
-        this.size = data.length;
       }.bind(this));
 
-      // this.gallery = this.createGallery();
       this.userInput = 0;
       this.cacheElements();
       this.bindEvents();
@@ -36,9 +32,10 @@ $(document).ready(function() {
       this.progressDiv = $('.progress');
       this.progressBar = $('.progress-bar');
       this.quizTitle = $('.quiz-title');
+      this.quizSelect = $('.quiz-select');
     },
     bindEvents: function() {
-      this.buttonStart.on('click', this.prepareImages.bind(this));
+      this.buttonStart.on('click', this.initQuiz.bind(this));
       this.buttonYes.on('click', this.showQuestion.bind(this, true));
       this.buttonNo.on('click', this.showQuestion.bind(this, false));
       this.buttonShow.on('click', this.showAnswer.bind(this));
@@ -66,12 +63,20 @@ $(document).ready(function() {
       }
     },
 
-    prepareImages: function() {
+    initQuiz: function() {
+      this.setQuizSize();
+      this.setInitialValues();
+      this.updateMainView(0);
+      this.prepareContent();
+    },
+    setQuizSize: function() {
+      var size = +this.quizSelect.val();
+      this.size = size ? size : this.images.length;
+    },
+    setInitialValues: function() {
       this.userInput = 0;
       this.gallery = this.createGallery(this.size);
       this.images = this.shuffle(this.images);
-      this.updateMainView(0);
-      this.prepareContent();
     },
 
     showQuestion: function(answer) {
@@ -142,6 +147,7 @@ $(document).ready(function() {
       this.buttonNo.addClass('hidden');
       this.buttonYes.addClass('hidden');
       this.progressDiv.addClass('invisible');
+      this.quizSelect.removeClass('invisible');
     },
 
     prepareContent: function() {
@@ -149,6 +155,7 @@ $(document).ready(function() {
       this.quizImage.removeClass('invisible');
       this.buttonStart.addClass('hidden');
       this.progressDiv.removeClass('invisible');
+      this.quizSelect.addClass('invisible');
       this.buttonShow.removeClass('hidden');
     },
 

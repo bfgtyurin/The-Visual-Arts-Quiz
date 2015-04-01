@@ -8,10 +8,45 @@ body {
 }
 
 .col-height {
-    height: 350px;
+    height: 540px;
 }
 
-.vert-offset-top-2 {
+@media screen and (max-width: 1100px) {
+    .col-height {
+        height: 420px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .col-height {
+        height: 640px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .col-height {
+        height: 35px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .col-height {
+        height: 260px;
+    }
+}
+
+
+
+/*.progress {
+    width: 100px;
+}*/
+
+/*@media screen and (max-width: 1400px) {
+    .col-height {
+        height: 100px;
+    }
+}
+*/.vert-offset-top-2 {
     margin-top: 2em;
 }
 .vert-offset-top-1 {
