@@ -1,7 +1,7 @@
 
 var express = require('express');
 var app = express();
-var port = 3000;
+var port = 5000;
 
 var quiz = require('./lib/quiz');
 var imagesApi = require('./lib/images-api')
@@ -15,5 +15,5 @@ app.get('/', function(req, res) {
 
 app.use(express.static(__dirname + '/public'));
 
-app.listen(port);
+app.listen(process.env.PORT || port);
 console.log('listening on port ' + port);

@@ -10,7 +10,7 @@ var paths = {
 gulp.task('browser-sync', function() {
   browserSync({
     files: [paths.jade, paths.js, paths.css],
-    proxy: 'http://localhost:3000'
+    proxy: 'http://localhost:5000'
   });
 });
 
