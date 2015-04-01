@@ -8,7 +8,7 @@ body {
 }
 
 .col-height {
-    height: 540px;
+    height: 500px;
 }
 
 @media screen and (max-width: 1400px) {

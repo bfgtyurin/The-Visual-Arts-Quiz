@@ -7,8 +7,8 @@ $(document).ready(function() {
     init: function() {
       this.imageApiPath = '/images-api/';
       this.fetchImages(function(data) {
-        this.images = data;
-        this.quizTitle.append(' (' + this.images.length + ')');
+        this.fetchedData = data;
+        this.quizTitle.append(' (' + this.fetchedData.length + ')');
       }.bind(this));
 
       this.userInput = 0;
@@ -24,7 +24,6 @@ $(document).ready(function() {
       this.quizImage = $('.quiz-image');
       this.buttonPrev = $('.button-prev');
       this.buttonNext = $('.button-next');
-      this.answerField = $('.answer-field');
       this.buttonShow = $('.show-button');
       this.buttonNo = $('.no-button');
       this.buttonYes = $('.yes-button');
@@ -33,6 +32,9 @@ $(document).ready(function() {
       this.progressBar = $('.progress-bar');
       this.quizTitle = $('.quiz-title');
       this.quizSelect = $('.quiz-select');
+      this.carousel = $('.carousel');
+      this.$list = $('.carousel ul');
+      this.answerField = this.$list.find('h4');
     },
     bindEvents: function() {
       this.buttonStart.on('click', this.initQuiz.bind(this));
@@ -66,17 +68,41 @@ $(document).ready(function() {
     initQuiz: function() {
       this.setQuizSize();
       this.setInitialValues();
+
+      this.initCarousel();
+
       this.updateMainView(0);
+
       this.prepareContent();
     },
     setQuizSize: function() {
       var size = +this.quizSelect.val();
-      this.size = size ? size : this.images.length;
+      this.size = size ? size : this.fetchedData.length;
+
     },
     setInitialValues: function() {
       this.userInput = 0;
       this.gallery = this.createGallery(this.size);
-      this.images = this.shuffle(this.images);
+      this.fetchedData = this.shuffle(this.fetchedData);
+      this.images = this.fetchedData.slice(0, this.size);
+    },
+
+    initCarousel: function() {
+          var $list = this.$list.detach();
+          $list.empty();
+
+          this.images.forEach(function(image) {
+            var li = $('<li>')
+                .append($('<h4>')
+                    .text(image.text)
+                    .attr('class', 'answer-field invisible text-center'))
+                .append($('<img>').attr('src', image.href)
+                    .attr('class', 'col-height img-responsive center-block'))
+                .attr('class', 'hidden');
+            $list.append(li);
+          }, this);
+
+          $list.appendTo(this.carousel);
     },
 
     showQuestion: function(answer) {
@@ -101,17 +127,19 @@ $(document).ready(function() {
     },
 
     updateMainView: function(index) {
-      var image = this.images[index];
-      var imgHref = image.href;
-      var imgText = image.text;
-
-      this.renderMainView(imgHref, imgText);
+      this.changeImage(index);
       this.updateProgressBar(index);
     },
 
-    renderMainView: function(imgHref, imgText) {
-      this.quizImage.attr('src', imgHref);
-      this.answerField.text(imgText);
+
+
+    changeImage: function(index) {
+      if (index === 0) {
+        this.carousel.find('li.hidden').eq(index).removeClass('hidden');
+      } else {
+        this.carousel.find('li').eq(index - 1).addClass('hidden');
+        this.carousel.find('li').eq(index).removeClass('hidden');
+      }
     },
 
     updateProgressBar: function(index) {
@@ -134,13 +162,13 @@ $(document).ready(function() {
     },
 
     renderResults: function() {
-      this.answerField.text('You are right ' + this.userInput + ' times out of  ' + this.size);
+      this.$list.find('h4').text('You are right ' + this.userInput + ' times out of  ' + this.size);
     },
 
     // was inside View
 
     initElements: function() {
-      this.answerField.removeClass('invisible');
+      this.$list.find('h4').removeClass('invisible');
       this.quizImage.addClass('invisible');
       this.buttonStart.removeClass('hidden');
       this.buttonShow.addClass('hidden');
@@ -151,8 +179,7 @@ $(document).ready(function() {
     },
 
     prepareContent: function() {
-      this.answerField.addClass('invisible');
-      this.quizImage.removeClass('invisible');
+      this.$list.find('h4').addClass('invisible');
       this.buttonStart.addClass('hidden');
       this.progressDiv.removeClass('invisible');
       this.quizSelect.addClass('invisible');
@@ -160,14 +187,14 @@ $(document).ready(function() {
     },
 
     enableAnswerContent: function() {
-      this.answerField.removeClass('invisible');
+      this.$list.find('h4').removeClass('invisible');
       this.buttonNo.removeClass('hidden');
       this.buttonYes.removeClass('hidden');
       this.buttonShow.addClass('hidden');
     },
 
     disableAnswerContent: function() {
-      this.answerField.addClass('invisible');
+      this.$list.find('h4').addClass('invisible');
       this.buttonNo.addClass('hidden');
       this.buttonYes.addClass('hidden');
       this.buttonShow.removeClass('hidden');
