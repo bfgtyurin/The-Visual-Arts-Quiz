@@ -8,7 +8,7 @@ body {
 }
 
 .col-height {
-    height: 500px;
+    height: 480px;
 }
 
 @media screen and (max-width: 1400px) {
@@ -19,19 +19,19 @@ body {
 
 @media screen and (max-width: 800px) {
     .col-height {
-        height: 420px;
+        height: 365px;
     }
 }
 
 @media screen and (max-width: 600px) {
     .col-height {
-        height: 360px;
+        height: 300px;
     }
 }
 
 @media screen and (max-width: 500px) {
     .col-height {
-        height: 260px;
+        height: 225px;
     }
 }
 

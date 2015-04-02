@@ -131,8 +131,6 @@ $(document).ready(function() {
       this.updateProgressBar(index);
     },
 
-
-
     changeImage: function(index) {
       if (index === 0) {
         this.carousel.find('li.hidden').eq(index).removeClass('hidden');
