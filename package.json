@@ -1,7 +1,7 @@
 {
-  "name": "kristod",
+  "name": "The Visual Arts Quiz",
   "version": "0.0.1",
-  "description": "foto quiz",
+  "description": "pic quiz",
   "main": "app.js",
   "scripts": {
     "postinstall": "bower install",

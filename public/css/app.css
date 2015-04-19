@@ -17,21 +17,21 @@ body {
     }
 }
 
-@media screen and (max-width: 800px) {
-    .col-height {
-        height: 365px;
-    }
-}
-
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 720px) {
     .col-height {
         height: 300px;
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 480px) {
     .col-height {
         height: 225px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .col-height {
+        height: 175px;
     }
 }
 
