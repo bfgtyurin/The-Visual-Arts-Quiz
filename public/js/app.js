@@ -51,7 +51,7 @@ $(document).ready(function() {
 
       return {
         getPrevious: function() {
-          if (current === 0) {
+          if (!current) {
             return current;
           } else {
             current--;
@@ -132,7 +132,7 @@ $(document).ready(function() {
     },
 
     changeImage: function(index) {
-      if (index === 0) {
+      if (!index) {
         this.carousel.find('li.hidden').eq(index).removeClass('hidden');
       } else {
         this.carousel.find('li').eq(index - 1).addClass('hidden');
