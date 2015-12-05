@@ -8,8 +8,12 @@ head
   link(rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons')
   link(rel='stylesheet' href='/css/app.css')
 body
-  div
-    block content
+  div.mdl-layout.mdl-js-layout
+  
+    include includes/header
+
+    block quiz
+
   script(src='/vendor/jquery/dist/jquery.min.js')
   script(src='/vendor/material-design-lite/material.js')
   script(src='/js/app.js')

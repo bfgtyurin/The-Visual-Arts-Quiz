@@ -6,16 +6,6 @@ ul {
     display: inline;
 }
 
-.center {
-    float: none;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.col-height {
-    height: 480px;
-}
-
 .vert-offset-top-2 {
     margin-top: 2em;
 }
@@ -26,6 +16,7 @@ ul {
 .centered {
     display: block;
     margin: 0 auto;
+    text-align: center;
 }
 
 .carousel li {
@@ -35,4 +26,10 @@ ul {
 
 .mdl-card__media > img {
     max-width: 100%;
+    display: block;
+}
+
+.inline-button {
+  display: inline;
+  margin: 1px;
 }
