@@ -28,19 +28,20 @@ $(document).ready(function() {
       this.buttonNo = $('.no-button');
       this.buttonYes = $('.yes-button');
       this.buttonStart = $('.button-start');
-      this.progressDiv = $('.progress');
-      this.progressBar = $('.progress-bar');
+      this.progressDiv = $('.mdl-progress');
+      this.progressBar = $('.mdl-js-progress');
       this.quizTitle = $('.quiz-title');
       this.quizSelect = $('.quiz-select');
       this.carousel = $('.carousel');
       this.$list = $('.carousel ul');
-      this.answerField = this.$list.find('h4');
+      this.progressBarPercent = 0;
     },
     bindEvents: function() {
       this.buttonStart.on('click', this.initQuiz.bind(this));
       this.buttonYes.on('click', this.showQuestion.bind(this, true));
       this.buttonNo.on('click', this.showQuestion.bind(this, false));
       this.buttonShow.on('click', this.showAnswer.bind(this));
+      this.progressBar.on('progressbar-updated', this.renderProgressBar);
     },
 
     // was return by View
@@ -92,17 +93,28 @@ $(document).ready(function() {
           $list.empty();
 
           this.images.forEach(function(image) {
-            var li = $('<li>')
-                .append($('<h4>')
-                    .text(image.text)
-                    .attr('class', 'answer-field invisible text-center'))
-                .append($('<img>').attr('src', image.href)
-                    .attr('class', 'col-height img-responsive center-block'))
-                .attr('class', 'hidden');
+            var li = this.createListElementWithImage(image);
             $list.append(li);
           }, this);
 
           $list.appendTo(this.carousel);
+    },
+
+    createListElementWithImage: function(image) {
+      var li = $('<li>').attr('class', 'hidden');
+      var mdl_card = $('<div>').attr('class', 'mdl-card mdl-shadow--2dp centered');
+      var mdl_card_title = $('<div>').attr('class', 'mdl-card__title');
+      var titleText = $('<p>').text(image.text).attr('class', 'answer-field invisible');
+      var figure = $('<figure>').attr('class', 'mdl-card__media');
+      var img = $('<img>').attr('src', image.href);
+
+      li.append(mdl_card);
+      mdl_card.append(mdl_card_title);
+      mdl_card_title.append(titleText);
+      mdl_card.append(figure);
+      figure.append(img);
+
+      return li;
     },
 
     showQuestion: function(answer) {
@@ -142,16 +154,16 @@ $(document).ready(function() {
 
     updateProgressBar: function(index) {
       var percent = this.calculatePercent(index, this.size - 1);
-      this.renderProgressBar(percent);
+      this.progressBarPercent = percent;
+      this.progressBar.trigger('progressbar-updated');
     },
 
     calculatePercent: function(a, b) {
       return Math.floor((a / b) * 100);
     },
 
-    renderProgressBar: function(percent) {
-      this.progressBar.attr('style', 'width: ' + percent + '%');
-      this.progressBar.text(percent + ' %');
+    renderProgressBar: function() {
+      this.MaterialProgress.setProgress(App.progressBarPercent);
     },
 
     createResultsView: function() {
@@ -160,13 +172,13 @@ $(document).ready(function() {
     },
 
     renderResults: function() {
-      this.$list.find('h4').text('You are right ' + this.userInput + ' times out of  ' + this.size);
+      this.$list.find('.answer-field').text('You are right ' + this.userInput + ' times out of  ' + this.size);
     },
 
     // was inside View
 
     initElements: function() {
-      this.$list.find('h4').removeClass('invisible');
+      this.$list.find('.answer-field').removeClass('invisible');
       this.quizImage.addClass('invisible');
       this.buttonStart.removeClass('hidden');
       this.buttonShow.addClass('hidden');
@@ -177,7 +189,7 @@ $(document).ready(function() {
     },
 
     prepareContent: function() {
-      this.$list.find('h4').addClass('invisible');
+      this.$list.find('.answer-field').addClass('invisible');
       this.buttonStart.addClass('hidden');
       this.progressDiv.removeClass('invisible');
       this.quizSelect.addClass('invisible');
@@ -185,14 +197,14 @@ $(document).ready(function() {
     },
 
     enableAnswerContent: function() {
-      this.$list.find('h4').removeClass('invisible');
+      this.$list.find('.answer-field').removeClass('invisible');
       this.buttonNo.removeClass('hidden');
       this.buttonYes.removeClass('hidden');
       this.buttonShow.addClass('hidden');
     },
 
     disableAnswerContent: function() {
-      this.$list.find('h4').addClass('invisible');
+      this.$list.find('.answer-field').addClass('invisible');
       this.buttonNo.addClass('hidden');
       this.buttonYes.addClass('hidden');
       this.buttonShow.removeClass('hidden');

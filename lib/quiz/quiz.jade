@@ -4,36 +4,38 @@ block content
   div.mdl-grid
     div.mdl-cell.mdl-cell--4-col
     div.mdl-cell.mdl-cell--4-col
-      h1.text-center.quiz-title QUIZ
-    div.mdl-cell.mdl-cell--4-col
-  dvi.row
-    div.col-md-1
-    div.col-xs-12.col-sm-12.col-md-10.center-block
-      div.carousel
-        ul.list-unstyled
-          li
-            h4.answer-field
-    div.col-md-1
-  div.row.text-center
+      h4.mdl-typography--text-center QUIZ
     div.mdl-cell.mdl-cell--4-col
 
+  dvi.mdl-grid
+    div.mdl-cell.mdl-cell--3-col
+    div.mdl-cell.mdl-cell--6-col
+      div.carousel.centered
+        ul
+          li
+            p.answer-field
+    div.mdl-cell.mdl-cell--3-col
+
+  div.mdl-grid
     div.mdl-cell.mdl-cell--4-col
-      div.progress.invisible
-        div.progress-bar.progress-bar-striped(role='progressbar' aria-valuenow='0' aria-valuemin='0' aria-valuemax='100' style='width: 0%')
-        span.sr-only45
-  div.row
-    div.col-sm-3.col-xs-3
-    div.col-sm-6.col-xs-6
-      select.center-block.quiz-select
+    div.mdl-cell.mdl-cell--4-col
+      div.mdl-progress.mdl-js-progress.invisible.centered
+    div.mdl-cell.mdl-cell--4-col
+
+  div.mdl-grid
+    div.mdl-cell.mdl-cell--4-col
+    div.mdl-cell.mdl-cell--4-col
+      select.center-block.quiz-select.centered
         option(value="5") 5
         option(value="10") 10
         option(value="25") 25
         option(value="") All
-  div.row
-    div.col-xs-3
-    div.col-xs-6.text-center.vert-offset-top-1
-      div.btn-group(role='group')
-        button.btn.btn-default.btn-offset.show-button.hidden(type.button) Show answer
-        button.btn.btn-danger.btn-offset.no-button.hidden(type.button) No&nbsp;
-        button.btn.btn-success.btn-offset.yes-button.hidden(type.button) Yes
-        button.btn.btn-default.btn-offset.button-start(type.button) Start
+
+  div.mdl-grid
+    div.mdl-cell.mdl-cell--4-col
+    div.mdl-cell.mdl-cell--4-col
+      button.mdl-button.mdl-js-button.mdl-button--raised.show-button.hidden.centered(type.button) Show answer
+      button.mdl-button.mdl-button--raised.mdl-button--accent.no-button.hidden.centered(type.button) No
+      button.mdl-button.mdl-button--raised.mdl-button--colored.yes-button.hidden.centered(type.button) Yes
+      button.mdl-button.mdl-js-button.mdl-button--raised.button-start.centered(type.button) Start
+    div.mdl-cell.mdl-cell--4-col
