@@ -1,15 +1,16 @@
 doctype html
 head
-  title The Visual Arts Quiz
+  title The Visual Arts 19th century Quiz
   meta(charset='utf-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
   link(rel="stylesheet", href="/vendor/normalize.css/normalize.css")
   link(rel='stylesheet' href='/vendor/material-design-lite/material.min.css')
+  link(rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' type='text/css')
   link(rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons')
   link(rel='stylesheet' href='/css/app.css')
 body
-  div.mdl-layout.mdl-js-layout
-  
+  div.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+
     include includes/header
 
     block quiz

@@ -4,35 +4,16 @@ block quiz
   main.mdl-layout__content
     div.page-content
       div.mdl-grid
-        div.mdl-cell.mdl-cell--3-col
-        div.mdl-cell.mdl-cell--6-col
+        div.mdl-cell.mdl-cell--4-col
+        div.mdl-cell.mdl-cell--4-col.mdl-cell--12-col-tablet.mdl-cell--12-col-phone
           div.carousel.centered
             ul
               li
-                p.answer-field
-        div.mdl-cell.mdl-cell--3-col
-
-      div.mdl-grid
-        div.mdl-cell.mdl-cell--4-col
-        div.mdl-cell.mdl-cell--4-col
           div.mdl-progress.mdl-js-progress.invisible.centered
-        div.mdl-cell.mdl-cell--4-col
-
-      div.mdl-grid
-        div.mdl-cell.mdl-cell--4-col
-        div.mdl-cell.mdl-cell--4-col
-          select.center-block.quiz-select.centered
-            option(value="5") 5
-            option(value="10") 10
-            option(value="25") 25
-            option(value="") All
-
-      div.mdl-grid
-        div.mdl-cell.mdl-cell--4-col
-        div.mdl-cell.mdl-cell--4-col
+          div.centered.answer-field &nbsp;
           button.mdl-button.mdl-js-button.mdl-button--raised.show-button.hidden.centered(type.button) Show answer
           div.centered
-            button.mdl-button.mdl-button--raised.mdl-button--accent.no-button.hidden.inline-button(type.button) No
             button.mdl-button.mdl-button--raised.mdl-button--colored.yes-button.hidden.inline-button(type.button) Yes
+            button.mdl-button.mdl-button--raised.mdl-button--accent.no-button.hidden.inline-button(type.button) No
           button.mdl-button.mdl-js-button.mdl-button--raised.button-start.centered(type.button) Start
         div.mdl-cell.mdl-cell--4-col

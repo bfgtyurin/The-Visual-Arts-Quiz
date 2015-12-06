@@ -34,7 +34,9 @@ $(document).ready(function() {
       this.quizSelect = $('.quiz-select');
       this.carousel = $('.carousel');
       this.$list = $('.carousel ul');
+      this.answerField = $('.answer-field');
       this.progressBarPercent = 0;
+      this.answers = [];
     },
     bindEvents: function() {
       this.buttonStart.on('click', this.initQuiz.bind(this));
@@ -77,7 +79,9 @@ $(document).ready(function() {
       this.prepareContent();
     },
     setQuizSize: function() {
-      var size = +this.quizSelect.val();
+      // var size = +this.quizSelect.val();
+
+      var size = 10;
       this.size = size ? size : this.fetchedData.length;
 
     },
@@ -95,22 +99,22 @@ $(document).ready(function() {
           this.images.forEach(function(image) {
             var li = this.createListElementWithImage(image);
             $list.append(li);
+            this.answers.push(image.text);
           }, this);
 
+          this.answers.reverse();
           $list.appendTo(this.carousel);
     },
 
     createListElementWithImage: function(image) {
       var li = $('<li>').attr('class', 'hidden');
       var mdl_card = $('<div>').attr('class', 'mdl-card mdl-shadow--2dp centered');
-      var mdl_card_title = $('<div>').attr('class', 'mdl-card__title');
-      var titleText = $('<p>').text(image.text).attr('class', 'answer-field invisible');
-      var figure = $('<figure>').attr('class', 'mdl-card__media');
+      var figure = $('<figure>').attr('class', 'mdl-card__media').attr('alt', image.text);
       var img = $('<img>').attr('src', image.href);
 
+      // this.answerField.text(image.text).attr('class', 'answer-field centered invisible');
+
       li.append(mdl_card);
-      mdl_card.append(mdl_card_title);
-      mdl_card_title.append(titleText);
       mdl_card.append(figure);
       figure.append(img);
 
@@ -172,13 +176,13 @@ $(document).ready(function() {
     },
 
     renderResults: function() {
-      this.$list.find('.answer-field').text('You are right ' + this.userInput + ' times out of  ' + this.size);
+      this.answerField.text('You are right ' + this.userInput + ' times out of  ' + this.size);
     },
 
     // was inside View
 
     initElements: function() {
-      this.$list.find('.answer-field').removeClass('invisible');
+      this.answerField.removeClass('invisible');
       this.quizImage.addClass('invisible');
       this.buttonStart.removeClass('hidden');
       this.buttonShow.addClass('hidden');
@@ -189,7 +193,7 @@ $(document).ready(function() {
     },
 
     prepareContent: function() {
-      this.$list.find('.answer-field').addClass('invisible');
+      this.answerField.addClass('invisible');
       this.buttonStart.addClass('hidden');
       this.progressDiv.removeClass('invisible');
       this.quizSelect.addClass('invisible');
@@ -197,14 +201,15 @@ $(document).ready(function() {
     },
 
     enableAnswerContent: function() {
-      this.$list.find('.answer-field').removeClass('invisible');
+      this.answerField.removeClass('invisible');
+      this.answerField.text(this.answers.pop());
       this.buttonNo.removeClass('hidden');
       this.buttonYes.removeClass('hidden');
       this.buttonShow.addClass('hidden');
     },
 
     disableAnswerContent: function() {
-      this.$list.find('.answer-field').addClass('invisible');
+      this.answerField.addClass('invisible');
       this.buttonNo.addClass('hidden');
       this.buttonYes.addClass('hidden');
       this.buttonShow.removeClass('hidden');

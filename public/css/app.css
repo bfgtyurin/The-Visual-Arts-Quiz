@@ -3,14 +3,21 @@ body {
 
 ul {
     text-align: center;
+    display: block;
     display: inline;
 }
 
-.vert-offset-top-2 {
-    margin-top: 2em;
+.mdl-layout__header {
+  background-color: #0e2532;
 }
-.vert-offset-top-1 {
-    margin-top: 1em;
+
+.no-button {
+  background-color: #bcaa78 !important;
+}
+
+button {
+  background-color: #0e2532 !important;
+  color: #fff !important;
 }
 
 .centered {
@@ -21,12 +28,33 @@ ul {
 
 .carousel li {
     list-style-type: none;
-    height: 480px;
+}
+
+.mdl-card{
+  max-width: 100%;
+  margin-top: -30px;
+}
+
+.mdl-card__media {
+  background-color: #fff;
 }
 
 .mdl-card__media > img {
     max-width: 100%;
-    display: block;
+    height: 225px;
+}
+
+.mdl-progress {
+  max-width: 250px;
+  margin-top: 20px;
+}
+
+.answer-field {
+  margin: 10px 0;
+}
+
+.buttons-block {
+  vertical-align: top;
 }
 
 .inline-button {
