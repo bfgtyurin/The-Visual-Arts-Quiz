@@ -20,6 +20,10 @@ button {
   color: #fff !important;
 }
 
+.progressbar  {
+  background-color: #0e2532 !important;
+}
+
 .centered {
     display: block;
     margin: 0 auto;
