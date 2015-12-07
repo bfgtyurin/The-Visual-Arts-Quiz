@@ -73,3 +73,7 @@ button {
   display: inline;
   margin: 1px;
 }
+
+footer {
+  background-color: #424242!important;
+}
